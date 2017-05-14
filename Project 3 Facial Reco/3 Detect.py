@@ -8,10 +8,10 @@ chemin = "haarcascade_frontalface_default.xml"
 visagechemin = cv2.CascadeClassifier(chemin);
 
 
-cam = cv2.VideoCapture(0)
+webcam = cv2.VideoCapture(0)
 font = cv2.cv.InitFont(cv2.cv.CV_FONT_HERSHEY_SIMPLEX, 1, 1, 0, 1, 1)
 while True:
-    ret, im =cam.read()
+    ret, im =webcam.read()
     gray=cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
     visage=visagechemin.detectMultiScale(gray, 1.2,5)
     for(x,y,w,h) in visage:
@@ -27,5 +27,5 @@ while True:
     cv2.imshow('im',im) 
     if cv2.waitKey(10) & 0xFF==ord('q'):
         break
-cam.release()
+webcam.release()
 cv2.destroyAllWindows()
